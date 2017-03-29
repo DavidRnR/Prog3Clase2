@@ -1,4 +1,3 @@
-
 public class Ordenamiento2 {
 	Nodo primero;
 	int cantidad = 0;
@@ -78,5 +77,27 @@ public class Ordenamiento2 {
 			return true;
 		}
 		return ordenadaDes(primero);
+	}
+	
+	private int buscarElementoPriv(Nodo n, int valor){
+		if(n != null){
+			if(n.getValor() == valor){
+				return valor;
+			}else{
+				n = n.getSig();
+				return buscarElementoPriv(n, valor);
+			}
+		}
+		return -1;
+	}
+	
+	public int buscarElemento(int valor){
+		Nodo nodoActual;
+		if(primero != null){
+			nodoActual = primero;
+			return buscarElementoPriv(nodoActual, valor);
+		}else{
+			return -1;
+		}
 	}
 }
